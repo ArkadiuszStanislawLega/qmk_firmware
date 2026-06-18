@@ -4,7 +4,6 @@ enum layer_number {
   _DVORAK = 0,
   _LOWER,
   _RAISE,
-  _NUMBERS,
   _EFS,
   _ADJUST,
 };
@@ -22,7 +21,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|DELETE |    |EFS    |------+------+------+------+------+------|
  * |LShift|   "  |   Q  |   J  |   K  |   X  |-------|    |-------|   B  |   M  |   W  |   V  |   Z  |RShift|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt |NUMBERS LOWER| /Space  /       \Enter \  |RAISE |BackSP| RGUI |
+ *                   | LAlt |EFS   | LOWER| /Space  /       \Enter \  |RAISE |BackSP| RGUI |
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
@@ -30,8 +29,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,   KC_7,           KC_5,       KC_3,       KC_1,    KC_9,                              KC_0,    KC_2,    KC_4,     KC_6,   KC_8,   KC_GRAVE,
   KC_TAB,   KC_SEMICOLON,   KC_COMMA,   KC_DOT,     KC_P,    KC_Y,                              KC_F,    KC_G,    KC_C,     KC_R,   KC_L,   KC_SLASH,
   KC_LCTL,  KC_A,           KC_O,       KC_E,       KC_U,    KC_I,                              KC_D,    KC_H,    KC_T,     KC_N,   KC_S,   KC_MINS,
-  KC_LSFT,  KC_QUOTE,       KC_Q,       KC_J,       KC_K,    KC_X,   KC_DELETE,       TG(_EFS), KC_B,    KC_M,    KC_W,     KC_V,   KC_Z,   KC_RSFT,
-                            KC_LALT,    TG(_NUMBERS),    MO(_LOWER), KC_SPC,          KC_ENT,   MO(_RAISE),     KC_BSPC, KC_RGUI
+  KC_LSFT,  KC_QUOTE,       KC_Q,       KC_J,       KC_K,    KC_X,  KC_DELETE,  TG(_EFS),   KC_B,    KC_M,    KC_W,     KC_V,   KC_Z,   KC_RSFT,
+                            KC_LALT,    KC_LGUI,    MO(_LOWER),     KC_SPC,     KC_ENT,         MO(_RAISE),     KC_BSPC, KC_RGUI
 ),
 
 /*================================================================================================================
@@ -39,21 +38,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |   *  |   )  |   +  |   ]  |   !  |  #   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |      |      |   ć  |      |   ł  |  @   |
+ * |      |      |WS Prv|WS Nxt|      |      |                    |      |      |   ć  |      |   ł  |  @   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------|      |      |      |   ń  |   ś  |   _  |
+ * |Ctr+Tab|Ctr+Z|Ctr+X |Ctr+C |Ctr+V |	     |-------.    ,-------|      |      |      |   ń  |   ś  |   _  |
  * |------+------+------+------+------+------|DELETE |    |RGUI   |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------| left | down |  up  | right|   ż  |   |  |
+ * |      |      |PrntSc|Ctl+F5|KeePas|Ctr+b |-------|    |-------| left | down |  up  | right|   ż  |   |  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt |NUMBERS 	  | /Space  /       \Enter \  |RAISE |BackSP| EFS  |
+ *                   | LAlt |	   | 	  | /Space  /       \Enter \  |RAISE |BackSP| EFS  |
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
 [_LOWER] = LAYOUT(
-  _______,  _______,   _______, _______, _______, _______,                    KC_ASTERISK,KC_RIGHT_PAREN, KC_PLUS,    KC_RIGHT_BRACKET, KC_EXCLAIM, KC_HASH,
-  _______,  _______,   _______, _______, _______, _______,                    _______,    _______,        RALT(KC_C), _______,          RALT(KC_L),    KC_AT,
-  _______,  _______,   _______, _______, _______, _______,                    _______,    _______,        _______,    RALT(KC_N),       RALT(KC_S),    KC_UNDERSCORE,
-  _______,  _______,   _______, _______, _______, _______,  _______, _______, KC_LEFT,    KC_DOWN,        KC_UP,      KC_RIGHT,         RALT(KC_Z),    KC_PIPE,
+  _______,  _______,   _______, _______, _______, _______,                   KC_ASTERISK,KC_RIGHT_PAREN, KC_PLUS,    KC_RIGHT_BRACKET, KC_EXCLAIM, KC_HASH,
+  _______,  _______,   _______, LGUI(KC_LEFT), LGUI(KC_RGHT), _______,                 _______,    _______,        RALT(KC_C), _______,          RALT(KC_L),    KC_AT,
+  C(KC_TAB), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), C(KC_R),                    _______,    _______,        _______,    RALT(KC_N),       RALT(KC_S),    KC_UNDERSCORE,
+  _______,   _______, KC_PSCR, C(KC_F5), LCA(KC_A),_______,  _______, _______, KC_LEFT,    KC_DOWN,        KC_UP,      KC_RIGHT,         RALT(KC_Z),    KC_PIPE,
                                 _______, _______, XXXXXXX, _______,   _______, _______,  _______, _______
 ),
 
@@ -66,41 +65,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |CpsLck|   ą  |  ó   |   ę  |      |      |-------.    ,-------|      |      |      |      |	     |      |
  * |------+------+------+------+------+------|DELETE |    |RGUI   |------+------+------+------+------+------|
- * |   ^  |   %  |  $   |  @   |   \  |  ź   |-------|    |-------|      |      |      |      |      |      |
+ * |      |   ^  |  $   |  @   |   %  |  \   |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt |NUMBERS LOWER| /Space  /       \Enter \  |      |BackSP| EFS  |
+ *                   | LAlt |EFS   | LOWER| /Space  /       \Enter \  |      |BackSP| EFS  |
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
 [_RAISE] = LAYOUT(
-  KC_AMPERSAND,   KC_LEFT_BRACKET, KC_LEFT_CURLY_BRACE,   KC_RIGHT_CURLY_BRACE, KC_LEFT_PAREN, KC_EQUAL,        		     _______, _______, _______, _______,  _______, _______,
-  _______,  	  _______, 	       _______,               _______,              _______,       _______,                      _______, _______, _______, _______,  _______, _______,
-  KC_CAPS,  	  RALT(KC_A),      RALT(KC_O),   	      RALT(KC_E),           _______,   	   _______,                      _______, _______, _______, _______,  _______, _______,
-  KC_CIRCUMFLEX,  KC_PERCENT,      KC_DOLLAR,   	      KC_AT,  		        KC_BACKSLASH,  RALT(KC_X), _______, _______, _______, _______, _______, _______,  _______, _______,
+  KC_AMPERSAND, KC_LEFT_BRACKET, KC_LEFT_CURLY_BRACE, KC_RIGHT_CURLY_BRACE, KC_LEFT_PAREN, KC_EQUAL,        		       _______, _______, _______, _______,  _______, _______,
+  _______,  	_______, 	     _______,             _______,              _______,       _______,                        _______, _______, _______, _______,  _______, _______,
+  KC_CAPS,  	RALT(KC_A),      RALT(KC_O),   	      RALT(KC_E),           _______,   	   _______,                        _______, _______, _______, _______,  _______, _______,
+  _______,   	KC_CIRCUMFLEX,   KC_DOLLAR,   	      KC_AT,  		        KC_PERCENT,    KC_BACKSLASH, _______, _______, _______, _______, _______, _______,  _______, _______,
                                	 	                                    _______, _______, _______,   _______,          _______,  XXXXXXX, _______, _______
-),
-
-/*================================================================================================================
- * NUMBERS
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |   7  |   8  |  9   |                    |      |  +   |   -  |  =   |   \  |   ^  |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |   4  |   5  |  6   |-------.    ,-------|      | [    |  ]   |   *  |	  %  |      |
- * |------+------+------+------+------+------|DELETE |    |RGUI   |------+------+------+------+------+------|
- * |      |      |   0  |   1  |   2  |  3   |-------|    |-------|      |      |      |      |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt |DEFAULT LOWER| /Space  /       \Enter \  |      |BackSP|      |
- *                   |      |      |      |/       /         \      \ |      |      |      |
- *                   `----------------------------'           '------''--------------------'
- */
-[_NUMBERS] = LAYOUT(
-  _______, _______, _______, _______, _______, _______,        		          _______, _______, _______,   _______,     _______, _______,
-  _______, _______, _______, KC_7,    KC_8,    KC_9,                          _______, KC_PLUS, KC_MINUS,  KC_EQL,      KC_NUBS, KC_CIRCUMFLEX,
-  _______, _______, _______, KC_4,    KC_5,    KC_6,                          _______, KC_LBRC, KC_RBRC,   KC_ASTERISK, KC_PERCENT, _______,
-  _______, _______, KC_0,    KC_1,    KC_2,    KC_3,    _______,   _______,   _______, _______, _______,   _______,     _______, _______,
-                       _______, _______,		_______,   _______,    _______,  XXXXXXX, _______, _______
 ),
 
 /*================================================================================================================
@@ -114,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|DELETE |    |RGUI   |------+------+------+------+------+------|
  * |      |      |  F9  |  F10 |  F11 |  F12 |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt |      | 	  | /Space  /       \Enter \  |RAISE |BackSP|      |
+ *                   | LAlt |      | 	    | /Space  /       \Enter \  |RAISE |BackSP|      |
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
@@ -157,8 +133,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 /* SSD1306 OLED update loop, make sure to enable OLED_ENABLE=yes in rules.mk */
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-  if (is_keyboard_master())
-    return OLED_ROTATION_270;  // flips the display 180 degrees if offhand
+  if (!is_keyboard_master())
+    return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
   return rotation;
 }
 
@@ -169,47 +145,24 @@ void set_keylog(uint16_t keycode, keyrecord_t *record);
 const char *read_keylog(void);
 const char *read_keylogs(void);
 
+// const char *read_mode_icon(bool swap);
+// const char *read_host_led_state(void);
 // void set_timelog(void);
 // const char *read_timelog(void);
 
-void render_default_layer_state(void) {
-    oled_write_P(PSTR("Layer"), false);
-    oled_write_P(PSTR(" "), false);
-    switch (get_highest_layer(layer_state)) {
-        case _DVORAK:
-            oled_write_P(PSTR("DVRK"), false);
-            break;
-        case _LOWER:
-            oled_write_ln_P(PSTR("LOW"), false);
-            break;
-        case _RAISE:
-            oled_write_P(PSTR("HIGH"), false);
-            break;
-        case _ADJUST:
-            oled_write_ln_P(PSTR("ADJ"), false);
-            break;
-        case _NUMBERS:
-            oled_write_ln_P(PSTR("NUM"), false);
-            break;
-        case _EFS:
-            oled_write_ln_P(PSTR("EFS"), false);
-            break;
-
-        default:
-            oled_write_ln_P(PSTR("Undefined"), false);
-    }
-}
-char wpm_str[3];
+char wpm_str[26];
 bool oled_task_user(void) {
   if (is_keyboard_master()) {
-    oled_write_P(PSTR("-----"), false);
+    // If you want to change the display of OLED, you need to change here
+    oled_write_ln(read_layer_state(), false);
+    oled_write_ln(read_keylog(), false);
     oled_write_ln(read_keylogs(), false);
-    oled_write_P(PSTR("-----"), false);
     oled_write_P(PSTR("WPM: "), false);
-    oled_write_ln(get_u8_str(get_current_wpm(), ' '), false);
-    oled_write_P(PSTR("-----"), false);
-    render_default_layer_state();
-    oled_write_P(PSTR("-----"), false);
+    oled_write(get_u8_str(get_current_wpm(), ' '), false);
+
+    //oled_write_ln(read_mode_icon(keymap_config.swap_lalt_lgui), false);
+    //oled_write_ln(read_host_led_state(), false);
+    //oled_write_ln(read_timelog(), false);
   } else {
     oled_write(read_logo(), false);
   }
