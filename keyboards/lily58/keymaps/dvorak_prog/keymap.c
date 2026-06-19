@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |Ctr+Tab|Ctr+Z|Ctr+X |Ctr+C |Ctr+V |	     |-------.    ,-------|      |      |      |   ń  |   ś  |   _  |
  * |------+------+------+------+------+------|DELETE |    |RGUI   |------+------+------+------+------+------|
- * |      |      |PrntSc|Ctl+F5|KeePas|Ctr+b |-------|    |-------| left | down |  up  | right|   ż  |   |  |
+ * |      |PrntSc|Ctl+F5|Ctr+B |Ctr+K |      |-------|    |-------| left | down |  up  | right|   ż  |   |  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LAlt |	   | 	  | /Space  /       \Enter \  |RAISE |BackSP| EFS  |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,  _______,   _______, _______, _______, _______,                   KC_ASTERISK,KC_RIGHT_PAREN, KC_PLUS,    KC_RIGHT_BRACKET, KC_EXCLAIM, KC_HASH,
   _______,  _______,   _______, LGUI(KC_LEFT), LGUI(KC_RGHT), _______,                 _______,    _______,        RALT(KC_C), _______,          RALT(KC_L),    KC_AT,
   C(KC_TAB), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), C(KC_R),                    _______,    _______,        _______,    RALT(KC_N),       RALT(KC_S),    KC_UNDERSCORE,
-  _______,   _______, KC_PSCR, C(KC_F5), LCA(KC_A),_______,  _______, _______, KC_LEFT,    KC_DOWN,        KC_UP,      KC_RIGHT,         RALT(KC_Z),    KC_PIPE,
+  _______,   KC_PSCR, C(KC_F5), C(KC_B), LCA(KC_K),_______,  _______, _______, KC_LEFT,    KC_DOWN,        KC_UP,      KC_RIGHT,         RALT(KC_Z),    KC_PIPE,
                                 _______, _______, XXXXXXX, _______,   _______, _______,  _______, _______
 ),
 
@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |CpsLck|   ą  |  ó   |   ę  |      |      |-------.    ,-------|      |      |      |      |	     |      |
  * |------+------+------+------+------+------|DELETE |    |RGUI   |------+------+------+------+------+------|
- * |      |   ^  |  $   |  @   |   %  |  \   |-------|    |-------|      |      |      |      |      |      |
+ * |   ^  |  $   |  @   |   %  |  \   | ź    |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LAlt |EFS   | LOWER| /Space  /       \Enter \  |      |BackSP| EFS  |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_AMPERSAND, KC_LEFT_BRACKET, KC_LEFT_CURLY_BRACE, KC_RIGHT_CURLY_BRACE, KC_LEFT_PAREN, KC_EQUAL,        		       _______, _______, _______, _______,  _______, _______,
   _______,  	_______, 	     _______,             _______,              _______,       _______,                        _______, _______, _______, _______,  _______, _______,
   KC_CAPS,  	RALT(KC_A),      RALT(KC_O),   	      RALT(KC_E),           _______,   	   _______,                        _______, _______, _______, _______,  _______, _______,
-  _______,   	KC_CIRCUMFLEX,   KC_DOLLAR,   	      KC_AT,  		        KC_PERCENT,    KC_BACKSLASH, _______, _______, _______, _______, _______, _______,  _______, _______,
+  KC_CIRCUMFLEX,   KC_DOLLAR,	KC_AT,  KC_PERCENT,    KC_BACKSLASH, RALT(KC_X), _______, _______, _______, _______, _______, _______,  _______, _______,
                                	 	                                    _______, _______, _______,   _______,          _______,  XXXXXXX, _______, _______
 ),
 
