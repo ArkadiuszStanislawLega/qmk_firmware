@@ -38,9 +38,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |   *  |   )  |   +  |   ]  |   !  |  #   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |WS Prv|WS Nxt|      |      |                    |      |      |   ć  |      |   ł  |  @   |
+ * | Ctr+Z|      |WS Prv|WS Nxt|      |      |                    |      |      |   ć  |      |   ł  |  @   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |Ctr+Tab|Ctr+Z|Ctr+X |Ctr+C |Ctr+V |	     |-------.    ,-------|      |      |      |   ń  |   ś  |   _  |
+ * |Ctr+Tab|     |Ctr+X |Ctr+C |Ctr+V |	     |-------.    ,-------|      |      |      |   ń  |   ś  |   _  |
  * |------+------+------+------+------+------|DELETE |    |RGUI   |------+------+------+------+------+------|
  * |      |PrntSc|Ctl+F5|Ctr+B |Ctr+K |      |-------|    |-------| left | down |  up  | right|   ż  |   |  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -50,8 +50,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT(
   _______,  _______,   _______, _______, _______, _______,                   KC_ASTERISK,KC_RIGHT_PAREN, KC_PLUS,    KC_RIGHT_BRACKET, KC_EXCLAIM, KC_HASH,
-  _______,  _______,   _______, LGUI(KC_LEFT), LGUI(KC_RGHT), _______,                 _______,    _______,        RALT(KC_C), _______,          RALT(KC_L),    KC_AT,
-  C(KC_TAB), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), C(KC_R),                    _______,    _______,        _______,    RALT(KC_N),       RALT(KC_S),    KC_UNDERSCORE,
+  C(KC_Z),  _______,   _______, LGUI(KC_LEFT), LGUI(KC_RGHT), _______,                 _______,    _______,        RALT(KC_C), _______,          RALT(KC_L),    KC_AT,
+  C(KC_TAB), _______, C(KC_X), C(KC_C), C(KC_V), C(KC_R),                    _______,    _______,        _______,    RALT(KC_N),       RALT(KC_S),    KC_UNDERSCORE,
   _______,   KC_PSCR, C(KC_F5), C(KC_B), LCA(KC_K),_______,  _______, _______, KC_LEFT,    KC_DOWN,        KC_UP,      KC_RIGHT,         RALT(KC_Z),    KC_PIPE,
                                 _______, _______, XXXXXXX, _______,   _______, _______,  _______, _______
 ),
